@@ -33,16 +33,13 @@ blue = {
     "MISSING_TAB_FUNC",
     "MISSING_TAB_VAR",
     "TOO_MANY_TAB_VAR",
-    "LINE_TOO_LONG",
+    "INVALID_LINE_LENGTH",
     "EXP_PARENTHESIS",
 }
 pink = {
-    "WRONG_SCOPE_COMMENT",
     "COMMENT_ON_INSTR",
 }
 grey = {
-    "INVALID_HEADER",
-    "WRONG_SCOPE_COMMENT",
 }
 
 _color_table = {

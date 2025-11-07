@@ -119,7 +119,6 @@ class Errors:
 
         ```python
         >>> errors.add("TOO_MANY_LINES")
-        >>> errors.add("INVALID_HEADER")
         >>> errors.add("GLOBAL_VAR_DETECTED", level="Notice")
         ```
         """

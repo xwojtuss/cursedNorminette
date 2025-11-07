@@ -34,8 +34,9 @@ class CheckVariableDeclaration(Rule, Check):
             if context.scope.vars > 5:
                 context.new_error("TOO_MANY_VARS_FUNC", context.peek_token(i))
             if (
-                context.history[-2] != "IsBlockStart"
-                and context.history[-2] != "IsVarDeclaration"
+                not ((context.history[-3] == "IsBlockStart"
+                or context.history[-3] == "IsVarDeclaration")
+                and context.history[-2] == "IsComment")
             ):
                 context.new_error("VAR_DECL_START_FUNC", context.peek_token(i))
             elif context.scope.vdeclarations_allowed is False:

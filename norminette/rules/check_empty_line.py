@@ -16,19 +16,12 @@ class CheckEmptyLine(Rule, Check):
             return False, 0
         if context.scope.name != "GlobalScope":
             if (
-                context.history[-1] != "IsVarDeclaration"
+                not ((context.history[-1] == "IsVarDeclaration"
+                or (context.history[-2] == "IsVarDeclaration"
+                and context.history[-1] == "IsComment")))
                 and context.scope.vdeclarations_allowed is True
             ):
                 context.scope.vdeclarations_allowed = False
-                if context.history[-1] not in ["IsEmptyLine", "IsComment"]:
-                    if (
-                        context.history[-1] == "IsBlockEnd"
-                        and context.scope.name == "Function"
-                    ):
-                        pass
-                    else:
-                        context.new_error("NL_AFTER_VAR_DECL", context.peek_token(i))
-                        return True, i
         if (
             len(context.history) > 1
             and context.history[-2] == "IsPreprocessorStatement"

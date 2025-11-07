@@ -16,8 +16,6 @@ class CheckComment(Rule, Check):
 
         for index, token in enumerate(tokens):
             if token.type in ("COMMENT", "MULT_COMMENT"):
-                if self.is_inside_a_function(context):
-                    context.new_error("WRONG_SCOPE_COMMENT", token)
                 if index == 0 or self.is_last_token(token, tokens[index+1:]):
                     continue
                 context.new_error("COMMENT_ON_INSTR", token)
