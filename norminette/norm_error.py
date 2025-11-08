@@ -136,4 +136,6 @@ digits or '_'"),
     "BAD_EXPONENT": _("Exponent has no digits"),
     "MULTIPLE_DOTS": _("Multiple dots in float constant"),
     "MULTIPLE_X": _("Multiple 'x' in hexadecimal float constant"),
+    "EVEN_WHILES": _("Even amount of 'while' keywords in function required"),
+    "EVEN_IFS": _("Even amount of 'if' keywords in function required"),
 }
