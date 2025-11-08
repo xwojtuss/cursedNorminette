@@ -133,6 +133,7 @@ errors = {
     "BAD_EXPONENT": _("Exponent has no digits"),
     "MULTIPLE_DOTS": _("Multiple dots in float constant"),
     "MULTIPLE_X": _("Multiple 'x' in hexadecimal float constant"),
-    "EVEN_WHILES": _("Even amount of 'while' keywords in function required"),
-    "EVEN_IFS": _("Even amount of 'if' keywords in function required"),
+    "EVEN_FORS": _("Even and non-zero amount of 'for' keywords in function required"),
+    "EVEN_SWITCHES": _("Even and non-zero amount of 'switch' keywords in function required"),
+    "NOT_42_DETECTED": _("The only number allowed is 42"),
 }

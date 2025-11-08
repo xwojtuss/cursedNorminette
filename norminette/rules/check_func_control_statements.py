@@ -9,7 +9,7 @@ class CheckFuncControlStatements(Rule, Check):
 
     def run(self, context):
         """
-        There must be an even number of while and if keywords
+        There must be an even number of for and switch keywords
         in the function scope
         """
         # print("TEST", context.sub)
@@ -34,14 +34,14 @@ class CheckFuncControlStatements(Rule, Check):
             except:
                 return False, 0
             while i < max_i:
-                if context.check_token(i, "WHILE") is True:
+                if context.check_token(i, "FOR") is True:
                     while_count += 1
-                elif context.check_token(i, "IF") is True:
+                elif context.check_token(i, "SWITCH") is True:
                     if_count += 1
                 i += 1
             if while_count % 2 == 0:
-                context.new_error("EVEN_WHILES", pos)
+                context.new_error("EVEN_FORS", pos)
             if if_count % 2 == 0:
-                context.new_error("EVEN_IFS", pos)
+                context.new_error("EVEN_SWITCHES", pos)
         # print("ran", context.scope.name, context.tokens)
 

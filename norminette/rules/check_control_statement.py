@@ -1,7 +1,7 @@
 from norminette.rules import Rule, Check
 
 
-forbidden_cs = ["FOR", "SWITCH", "CASE", "GOTO"]
+forbidden_cs = ["WHILE", "IF", "GOTO"]
 assigns = [
     "RIGHT_ASSIGN",
     "LEFT_ASSIGN",
