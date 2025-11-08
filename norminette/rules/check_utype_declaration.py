@@ -167,8 +167,6 @@ class CheckUtypeDeclaration(Rule, Check):
                     context.new_error("NEWLINE_IN_DECL", context.peek_token(ids[-1][1]))
                     can_nl_error = True
                 tmp -= 1
-            if tab_error:
-                context.new_error("TAB_REPLACE_SPACE", context.peek_token(tmp))
         if contain_full_def is False:
             i = 0
             i = ids[-1][1]

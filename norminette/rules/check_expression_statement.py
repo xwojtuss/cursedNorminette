@@ -47,7 +47,7 @@ class CheckExpressionStatement(Rule, Check):
 
     def run(self, context):
         """
-        C keywords (return, break, continue...) must be followed by a space, with the
+        C keywords (return, break, continue...) must be followed by a tab, with the
         exception of sizeof
         Return values in a function must be contained in parenthesis
         """
@@ -57,14 +57,14 @@ class CheckExpressionStatement(Rule, Check):
                 if (
                     context.check_token(
                         i + 1,
-                        ["SPACE", "NEWLINE", "RPARENTHESIS", "COMMENT", "MULT_COMMENT"],
+                        ["TAB", "NEWLINE", "RPARENTHESIS", "COMMENT", "MULT_COMMENT"],
                     )
                     is False
                 ):
-                    context.new_error("SPACE_AFTER_KW", context.peek_token(i))
+                    context.new_error("TAB_AFTER_KW", context.peek_token(i))
             if context.check_token(i, ["MULT", "BWISE_AND"]) is True and i > 0:
                 if context.check_token(i - 1, "IDENTIFIER") is True:
-                    context.new_error("SPACE_AFTER_KW", context.peek_token(i - 1))
+                    context.new_error("TAB_AFTER_KW", context.peek_token(i - 1))
             if context.check_token(i, "RETURN") is True:
                 tmp = i + 1
                 tmp = context.skip_ws(tmp)

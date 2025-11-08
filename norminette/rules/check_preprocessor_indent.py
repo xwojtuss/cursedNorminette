@@ -46,8 +46,6 @@ class CheckPreprocessorIndent(Rule, Check):
         n = context.skip_ws(i)
         while context.check_token(i, "SPACE"):
             i += 1
-        if context.check_token(i, "TAB"):
-            context.new_error("TAB_REPLACE_SPACE", context.peek_token(i))
         i = n
 
         # Check indentation
@@ -87,7 +85,5 @@ class CheckPreprocessorIndent(Rule, Check):
             j = i
             while context.check_token(i, "SPACE"):
                 i += 1
-            if context.check_token(i, "TAB"):
-                context.new_error("TAB_REPLACE_SPACE", context.peek_token(i))
             if context.skip_ws(j) - j > 1:
                 context.new_error("CONSECUTIVE_WS", context.peek_token(j))

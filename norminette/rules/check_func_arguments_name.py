@@ -40,12 +40,6 @@ class CheckFuncArgumentsName(Rule, Check):
                 i += 1
             return i
         ret, i = context.check_type_specifier(i)
-        has_tab = False
-        while context.check_token(i, ["SPACE", "TAB"]):
-            if context.check_token(i, "TAB") is True and has_tab is False:
-                context.new_error("TAB_INSTEAD_SPC", context.peek_token(i))
-                has_tab = True
-            i += 1
 
         if ret is False:
             context.new_error("ARG_TYPE_UKN", context.peek_token(i))

@@ -14,38 +14,8 @@ class CheckSpacing(Rule, Check):
         space_error = False
         while i in range(len(context.tokens[: context.tkn_scope])):
             if context.check_token(i, "SPACE"):
-                if context.check_token(i - 1 if i > 0 else 0, "TAB"):
-                    if space_tab_error is False:
-                        context.new_error("MIXED_SPACE_TAB", context.peek_token(i - 1))
-                        space_tab_error = True
-                if context.peek_token(i).pos[1] == 1:
-                    while i < context.tkn_scope and context.check_token(i, "SPACE"):
-                        i += 1
-                    if context.check_token(i + 1, "NEWLINE"):
-                        context.new_error("SPACE_EMPTY_LINE", context.peek_token(i))
-                        i += 1
-                        continue
-                    context.new_error("SPACE_REPLACE_TAB", context.peek_token(i))
-                    continue
-                t = context.skip_ws(i)
-                if (
-                    t != i
-                    and context.check_token(t, "NEWLINE")
-                    # CheckBrace already check for spacing, we avoid duplicating error here
-                    and not context.check_token(i-1, ("LBRACE", "RBRACE"))
-                ):
-                    context.new_error("SPC_BEFORE_NL", context.peek_token(i))
+                context.new_error("SPC_FOUND", context.peek_token(i))
                 i += 1
-                if context.check_token(i, "SPACE"):
-                    if space_error is False:
-                        context.new_error("CONSECUTIVE_SPC", context.peek_token(i - 1))
-                        space_error = True
-                    while i < context.tkn_scope and context.check_token(i, "SPACE"):
-                        i += 1
-                if context.check_token(i, "TAB"):
-                    if space_tab_error is False:
-                        context.new_error("MIXED_SPACE_TAB", context.peek_token(i - 1))
-                        space_tab_error = True
             elif context.check_token(i, "TAB"):
                 if context.peek_token(i).pos[1] == 1:
                     while context.check_token(i, "TAB"):

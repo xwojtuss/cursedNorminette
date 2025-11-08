@@ -62,7 +62,7 @@ class CheckFuncDeclaration(Rule, Check):
             while context.check_token(tmp, ["SPACE", "TAB"]) is True:
                 tmp -= 1
             if context.check_token(tmp, "NEWLINE") is False:
-                context.new_error("NO_SPC_BFR_PAR", context.peek_token(i))
+                context.new_error("NO_TAB_BFR_PAR", context.peek_token(i))
         if arg > 4:
             context.new_error("TOO_MANY_ARGS", context.peek_token(i))
         arg = []
