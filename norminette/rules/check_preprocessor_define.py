@@ -23,8 +23,6 @@ class CheckPreprocessorDefine(Rule, Check):
         i += 1  # skip DEFINE
         i = context.skip_ws(i)
 
-        if not context.peek_token(i).value.isupper():
-            context.new_error("MACRO_NAME_CAPITAL", context.peek_token(i))
         i += 1  # skip macro name
 
         if context.check_token(i, "LPARENTHESIS"):

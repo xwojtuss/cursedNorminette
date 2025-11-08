@@ -39,8 +39,6 @@ class CheckFuncDeclaration(Rule, Check):
                 or context.history[-i] == "IsFuncDeclaration"
             ):
                 i += 1
-            if length - i > 0 and context.history[-i] != "IsEmptyLine":
-                context.new_error("NEWLINE_PRECEDES_FUNC", context.peek_token(start))
         i = context.fname_pos + 1
         while (
             context.check_token(i, ["RPARENTHESIS"])
