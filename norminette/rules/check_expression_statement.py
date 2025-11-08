@@ -74,6 +74,9 @@ class CheckExpressionStatement(Rule, Check):
                 ):
                     context.new_error("RETURN_PARENTHESIS", context.peek_token(tmp))
                     return False, 0
+                elif context.check_token(tmp + 1, "LPARENTHESIS") is False:
+                    context.new_error("RETURN_PARENTHESIS", context.peek_token(tmp))
+                    return False, 0
                 elif context.check_token(tmp, "SEMI_COLON") is False:
                     tmp = context.skip_nest(tmp) + 1
                     if context.check_token(tmp, "SEMI_COLON") is False:

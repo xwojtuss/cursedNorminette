@@ -10,7 +10,7 @@ class CheckBrace(Rule, Check):
     def run(self, context):
         """
         C files must end with an empty line
-        Functions can only have 25 lines
+        Functions can only have 42 lines
         """
         i = 0
         i = context.skip_ws(i, nl=False)
@@ -32,4 +32,8 @@ class CheckBrace(Rule, Check):
                     i += 1
         if context.scope.name == "Function" and context.scope.lines > 43:
             context.new_error("TOO_MANY_LINES", context.peek_token(0))
+        if (context.scope.name == "Function"
+              and (context.scope.lines - 1) % 2 == 1
+              and context.scope.lines != 0):
+            context.new_error("ODD_NBR_LINES", context.peek_token(0))
         return False, 0

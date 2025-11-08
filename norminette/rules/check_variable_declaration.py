@@ -31,7 +31,7 @@ class CheckVariableDeclaration(Rule, Check):
         passed_assign = False
         if context.scope.name == "Function":
             context.scope.vars += 1
-            if context.scope.vars > 5:
+            if context.scope.vars > 2:
                 context.new_error("TOO_MANY_VARS_FUNC", context.peek_token(i))
             if (
                 not ((context.history[-3] == "IsBlockStart"
